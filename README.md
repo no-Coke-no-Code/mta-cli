@@ -5,35 +5,12 @@ mta-deploy-cli 是一个基于 Nodejs 进行快速部署的工具，结合 Vue C
 - 将`HTML`页面转换为 `base64字符串`，通过 `axios` 上传页面和静态资源到服务器
 
 
-# 安装
-
-先把npm的源切换到公司内部的私有仓库：
-```
-npm set registry http://192.168.3.236:4873
-```
-
-
-切换到内部私有仓库后，运行安装命令：
-```
-npm install -g mta-deploy-cli
-```
-
-安装之后，可以直接在命令访问 `md-cli` 命令了。
-检查版本：
-```
-md-cli -v
-```
-
 # 使用
 
-
-
-
-`mta-deploy-cli`默认是在需要部署的项目的根目录读取`mdcli.config.js`配置文件，当然，你也可以通过命令：`mta-deploy-cli -config mdcli.config.prod.js`指定读取某个配置文件
+`mta-deploy-cli`默认是在需要部署的项目的根目录读取`mdcli.config.js`配置文件，也可以通过命令：`mta-deploy-cli -config mdcli.config.prod.js`指定读取某个配置文件
 
 `mdcli.config.js`配置文件示例：
 ```js
-// 部署配置，配合 mta-deploy-cli使用，详情参考 http://192.168.3.236:4873/-/web/detail/mta-deploy-cli
 module.exports = {
   pageId: 20, // 页面ID
   Path: "login", // 页面访问路径
@@ -86,8 +63,6 @@ publicPath: process.env.NODE_ENV === "production" ? `$static_origin/${mdcliConfi
 ```
 md-cli
 ```
-
-如果想通过抓包工具`Fiddler`抓取部署时的接口请求情况，可以使用 `-proxy`参数：
 ```
 md-cli -proxy 127.0.0.1:8888
 ```
@@ -96,10 +71,3 @@ md-cli -proxy 127.0.0.1:8888
 ```
 mta-deploy-cli -config mdcli.config.prod.js
 ```
-
-
-## v1.0.31 
-配置文件添加清理缓存地址`clearCacheApi`，如果存在则调用
-
-## v1.0.32 
-完善二进制文件上传的日志打印
